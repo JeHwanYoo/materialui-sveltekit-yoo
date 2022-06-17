@@ -1,0 +1,21 @@
+#!/bin/zsh
+
+npm run format
+format_code=$?
+if ((format_code == 1)); then
+  exit 1
+fi
+
+npm run check
+check_code=$?
+if ((check_code == 1)); then
+  exit 1
+fi
+
+npm run test
+test_code=$?
+if ((test_code == 1)); then
+  exit 1
+fi
+
+git add .
